@@ -1,0 +1,34 @@
+<ul class="nav">
+  <li class="<?php echo Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'postcategory' ? 'active' : ''; ?>">
+    <a
+      href="<?php echo $this->url(array('module' => 'publicada', 'controller' => 'postcategory', 'action' => 'list', 'page' => null, 'id' => null, 'ccode' => null)); ?>"
+      title="<?php echo $this->translate('postcategory.list'); ?>"><i
+        class="icon-th-list"></i> <?php echo $this->translate('postcategory.list'); ?></a>
+  </li>
+  <li class="<?php echo Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'page' ? 'active' : ''; ?>">
+    <a href="<?php echo $this->url(array('module' => 'publicada', 'controller' => 'page', 'action' => 'list', 'page' => null, 'id' => null)); ?>"
+       title="<?php echo $this->translate('page.list'); ?>"><i
+        class="icon-book"></i> <?php echo $this->translate('page.list'); ?></a>
+  </li>
+  <li class="<?php echo Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'post' ? 'active' : ''; ?>">
+    <a href="<?php echo $this->url(array('module' => 'publicada', 'controller' => 'post', 'action' => 'list', 'page' => null, 'id' => null)); ?>"
+       title="<?php echo $this->translate('post.list'); ?>"><i
+        class="icon-tasks"></i> <?php echo $this->translate('post.list'); ?></a>
+  </li>
+  <li class="<?php echo Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'file' ? 'active' : ''; ?>">
+    <a href="<?php echo $this->url(array('module' => 'publicada', 'controller' => 'file', 'action' => 'list', 'page' => null, 'id' => null)); ?>"
+       title="<?php echo $this->translate('file.list'); ?>"><i
+        class="icon-picture"></i> <?php echo $this->translate('file.list'); ?></a>
+  </li>
+  <li class="<?php echo Zend_Controller_Front::getInstance()->getRequest()->getControllerName() == 'option' ? 'active' : ''; ?>">
+    <a href="<?php echo $this->url(array('module' => 'publicada', 'controller' => 'option', 'action' => 'list', 'page' => null, 'id' => null)); ?>"
+       title="<?php echo $this->translate('option.list'); ?>"><i
+        class="icon-check"></i> <?php echo $this->translate('option.list'); ?></a>
+  </li>
+  <!-- <li>
+    <a
+      href="<?php echo $this->url(array('module' => 'publicada', 'controller' => 'index', 'action' => 'clearcache')); ?>"
+      title="<?php echo $this->translate('site.clearcache'); ?>"><i
+        class="icon-warning-sign"></i> <?php echo $this->translate('site.clearcache'); ?></a>
+  </li> -->
+</ul>	

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <?php echo $this->partial('page_elements/html_head.phtml', array('title' => $this->title, 'description' => $this->description, 'keywords' => $this->keywords)); ?>
+
+</head>
+<body>
+
+<div id="wrap">
+
+  <?php echo $this->partial('page_elements/header.phtml', array('mainPages' => $this->mainPages, 'page' => $this->page, 'siteName' => $this->siteName, 'subPages' => $this->subPages, 'post' => $this->post)); ?>
+
+  <div id="main" class="layout_post">
+    <div class="container_12">
+
+      <div class="grid_8">
+        <div id="post">
+          <?php echo $this->layout()->content; ?>
+        </div>
+      </div>
+
+      <div class="grid_4">
+        <?php echo $this->getBody($this->page['code'] . 'sidebar'); ?>
+      </div>
+    </div>
+  </div>
+
+  <?php echo $this->partial('page_elements/footer.phtml'); ?>
+
+</div>
+
+<?php echo $this->partial('page_elements/tracking.phtml'); ?>
+<?php echo $this->partial('page_elements/html_scripts.phtml'); ?>
+
+</body>
+</html>

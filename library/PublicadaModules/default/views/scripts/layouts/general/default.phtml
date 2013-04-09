@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <?php echo $this->partial('page_elements/html_head.phtml', array('title' => $this->title, 'description' => $this->description, 'keywords' => $this->keywords)); ?>
+
+</head>
+<body>
+
+<?php echo $this->partial('page_elements/header.phtml', array('mainPages' => $this->mainPages, 'page' => $this->page, 'siteName' => $this->siteName, 'subPages' => $this->subPages)); ?>
+
+<div class="container">
+  <div class="row">
+    <div class="span8">
+      <div id="page_content">
+        <?php echo $this->layout()->content; ?>
+      </div>
+    </div>
+
+    <div class="span4">
+      <?php echo $this->getBody($this->page['code'] . 'sidebar'); ?>
+      <?php if (count($this->subPages)) : ?>
+        <ul id="sub_navigation" class="page_children">
+          <?php foreach ($this->subPages as $subPage) : ?>
+            <li>
+              <a
+                href="<?php echo $this->url(array('lang' => Zend_Registry::get('current_user_locale'), 'code' => $subPage['code']), 'page'); ?>"><?= $subPage['title']; ?></a>
+            </li>
+          <?php endforeach; ?>
+        </ul>
+      <?php endif; ?>
+      &nbsp;
+    </div>
+  </div>
+</div>
+
+<?php echo $this->partial('page_elements/footer.phtml', array('lang' => $this->lang, 'translate' => $this->translate)); ?>
+
+<?php echo $this->partial('page_elements/tracking.phtml'); ?>
+<?php echo $this->partial('page_elements/html_scripts.phtml'); ?>
+
+</body>
+</html>

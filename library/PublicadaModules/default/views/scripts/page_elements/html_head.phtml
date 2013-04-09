@@ -1,0 +1,22 @@
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<meta name="description" content="<?php echo $this->description; ?>"/>
+<meta name="keywords" content="<?php echo $this->keywords; ?>"/>
+<meta name="author" content="Merudia"/>
+
+<title><?php echo $this->title; ?></title>
+
+<link rel="author"
+      href="http://<?php echo $_SERVER['SERVER_NAME'] . $this->url(array('module' => 'default', 'controller' => 'page', 'action' => 'show', 'lang' => Zend_Registry::get('current_user_locale'), 'code' => 'about'), 'page'); ?>"/>
+<link rel="icon" type="image/ico" href="<?php echo $this->baseUrl(); ?>/img/merudia.ico"/>
+
+<?php echo $this->headLink()->appendStylesheet('/bootstrap/css/bootstrap.css'); ?>
+<?php echo $this->headLink()->appendStylesheet('/bootstrap/css/bootstrap-responsive.css'); ?>
+<?php echo $this->headLink()->appendStylesheet('/css/default.css'); ?>
+<?php echo $this->headScript()->appendFile('/js/lib/jquery/jquery-1.8.1.min.js'); ?>
+<?php echo $this->headScript()->appendFile('/bootstrap/js/bootstrap.js'); ?>
+
+<link rel="alternate" type="application/rss+xml" title="ATOM"
+      href="http://<?php echo $_SERVER['SERVER_NAME'] . $this->url(array('module' => 'default', 'controller' => 'feed', 'action' => 'index', 'lang' => Zend_Registry::get('current_user_locale'), 'type' => 'atom'), 'feed'); ?>"/>
+<link rel="alternate" type="application/rss+xml" title="RSS"
+      href="http://<?php echo $_SERVER['SERVER_NAME'] . $this->url(array('module' => 'default', 'controller' => 'feed', 'action' => 'index', 'lang' => Zend_Registry::get('current_user_locale'), 'type' => 'rss'), 'feed'); ?>"/>
+	

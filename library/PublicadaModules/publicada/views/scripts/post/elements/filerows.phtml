@@ -1,0 +1,13 @@
+<tr class="<?php echo ($this->partialCounter % 2) == 1 ? 'even' : 'odd'; ?>">
+  <td class="wide_col"><?php echo $this->name; ?></td>
+  <td class="buttons">
+    <a href="<?php echo $this->url(array('controller' => 'file', 'action' => 'edit', 'id' => $this->id)); ?>"
+       title="<?php echo $this->translate('action.edit'); ?>"><?php echo $this->translate('action.edit'); ?></a>
+  </td>
+  <td class="buttons">
+    <a
+      href="<?php echo $this->url(array('module' => 'publicada', 'controller' => 'post', 'action' => 'removefile', 'fid' => $this->id, 'cl' => Zend_Registry::get('content_locale'))); ?>"
+      onclick="return confirm('<?php echo $this->translate('warn.are_you_sure'); ?>');"
+      title="<?php echo $this->translate('action.delete'); ?>"><?php echo $this->translate('action.delete'); ?></a>
+  </td>
+</tr>

@@ -1,0 +1,17 @@
+<?php $depthClass = $this->depthCount > 0 ? 'depth_' . $this->depthCount : 'categories'; ?>
+
+<ul class="<?php echo $depthClass; ?> nav nav-list">
+  <?php foreach ($this->categories as $category) : ?>
+    <li<?php echo $category->code == Zend_Controller_Front::getInstance()->getRequest()->getParam('code') ? ' class="active"' : ''; ?>>
+      <a
+        href="<?php echo $this->url(array('code' => $category->code, 'lang' => Zend_Registry::get('content_locale')), 'category'); ?>"
+        title="<?php echo $category->name; ?>">
+        <?php echo $category->name; ?>
+      </a>
+      <?php $categories = $category->getSubcategories(); ?>
+      <?php if (count($category->getSubcategories()) && $this->depthCount < $this->depth) : ?>
+        <?php echo $this->partial('page_elements/categoriestree.phtml', array('categories' => $categories, 'depth' => $this->depth, 'depthCount' => ($this->depthCount + 1))); ?>
+      <?php endif; ?>
+    </li>
+  <?php endforeach; ?>
+</ul>

@@ -1,0 +1,25 @@
+<tr class="<?php echo ($this->partialCounter % 2) == 1 ? 'even' : 'odd'; ?>">
+  <td class="wide_col">
+    <a
+      href="<?php echo $this->url(array('controller' => 'postcategory', 'action' => 'list', 'ccode' => $this->code, 'page' => null)); ?>">
+      <?php echo $this->name; ?>
+    </a>
+  </td>
+  <td class="buttons">
+    <a href="<?php echo $this->url(array('controller' => 'postcategory', 'action' => 'edit', 'id' => $this->id)); ?>"
+       title="<?php echo $this->translate('action.edit'); ?>">
+      <?php echo $this->translate('action.edit'); ?>
+    </a>
+  </td>
+  <!--<td class="buttons">
+		<a href="<?php echo $this->url(array('controller' => 'postcategory', 'action' => 'findlinks', 'id' => $this->id)); ?>" title="<?php echo $this->translate('action.findlinks'); ?>">
+			<?php echo $this->translate('action.findlinks'); ?>
+		</a>
+	</td>-->
+  <td class="buttons">
+    <a href="<?php echo $this->url(array('controller' => 'postcategory', 'action' => 'delete', 'id' => $this->id)); ?>"
+       title="<?php echo $this->translate('action.delete'); ?>" onclick="confirm('OK?');">
+      <?php echo $this->translate('action.delete'); ?>
+    </a>
+  </td>
+</tr>

@@ -1,0 +1,20 @@
+<div id="sidebar">
+  <div id="search">
+    <form action="search.html" method="get">
+      <input type="text" id="q" name="q" value="Search..." class="input">
+    </form>
+  </div>
+  <!--
+  <div id="customer_login">
+    <h2>Customer Login</h2>
+    <form action="<?= $this->url(array('controller' => 'cutomer', 'action' => 'login')); ?>" method="post">
+    <ul>
+      <li><input type="text" id="username" name="username" value="username" class="input"></li>
+      <li><input type="password" id="password" name="password" value="password" class="input"></li>
+      <li class="right_align"><input type="image" src="<?= $this->baseUrl(); ?>img/btn_log_in.png"></li>
+    </ul>
+    </form>
+  </div>
+   -->
+  <?= $this->partial('general/page_elements/news.phtml', array('posts' => $this->posts)); ?>
+</div>

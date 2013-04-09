@@ -1,0 +1,7 @@
+<li>
+    <span class="publication_title"><a
+        href="<?php echo $this->url(array('id' => $this->id, 'lang' => Zend_Registry::get('current_user_locale')), 'post'); ?>"
+        title="<?php echo $this->title; ?>"><?php echo $this->title; ?></a></span>
+  <span class="publication_date"><?php echo $this->getDate($this->published_at); ?></span>
+  <span class="publication_snippet"><?php echo $this->description; ?></span>
+</li>

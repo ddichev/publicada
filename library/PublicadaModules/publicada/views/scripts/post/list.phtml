@@ -1,0 +1,15 @@
+<h2>
+  <?php $controllerName = Zend_Controller_Front::getInstance()->getRequest()->getParam('controller'); ?>
+  <?php echo $this->translate($controllerName . '.list'); ?>
+
+  <a href="<?php echo $this->url(array('module' => 'publicada', 'controller' => 'post', 'action' => 'create')); ?>"
+     class="btn btn-primary btn-small pull-right"
+     title="<?php echo $this->translate('post.new'); ?>"><?php echo $this->translate('post.new'); ?></a>
+</h2>
+
+<?php if (count($this->posts)) : ?>
+  <?php echo $this->partial('post/elements/table.phtml', array('posts' => $this->posts)); ?>
+  <?php echo $this->paginationControl($this->posts, 'Sliding', 'page_elements/pagination.phtml'); ?>
+<?php else : ?>
+  <p><?php echo $this->translate('post.empty'); ?></p>
+<?php endif; ?>

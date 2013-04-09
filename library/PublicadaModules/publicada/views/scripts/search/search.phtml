@@ -1,0 +1,55 @@
+<form
+  action="<?php echo $this->url(array('module' => 'publicada', 'controller' => $this->controllerName, 'action' => 'search', 'cl' => Zend_Registry::get('current_user_locale'))); ?>">
+  <h2>
+    <a
+      href="<?php echo $this->url(array('module' => 'publicada', 'controller' => $this->controllerName, 'action' => 'list')); ?>"
+      title="<?php echo $this->translate($this->controllerName . '.list'); ?>"><?php echo $this->translate($this->controllerName . '.list'); ?></a>
+
+    <?php echo $this->translate($this->controllerName . '.search') . ' ' . $this->translate('search.for'); ?>
+    "<?php echo $this->query; ?>"
+
+    <input type="text" name="q" id="q" value="<?php echo isset($this->query) ? $this->query : '' ?>"/>
+    <input type="submit" value="<?php echo $this->translate($this->controllerName . '.search'); ?>"/>
+  </h2>
+</form>
+<?php if ($this->hitsCount > 0) : ?>
+  <?php $i = 0; ?>
+  <dl id="search_results">
+    <?php foreach ($this->hits as $hit) : ?>
+      <?php if ($hit->content_type == 'page') : ?>
+        <dt>
+          <a
+            href="<?php echo $this->url(array('module' => 'publicada', 'controller' => 'page', 'action' => 'edit', 'id' => $hit->page_id, 'cl' => Zend_Registry::get('current_user_locale'))); ?>"><?php echo $this->escape($hit->title); ?></a>
+        </dt>
+        <dd><?php echo $hit->description ?></dd>
+      <?php endif;
+      if ($hit->content_type == 'post') : ?>
+        <dt>
+          <a
+            href="<?php echo $this->url(array('module' => 'publicada', 'controller' => 'post', 'action' => 'edit', 'id' => $hit->post_id, 'cl' => Zend_Registry::get('current_user_locale'))); ?>"><?php echo $this->escape($hit->title); ?></a>
+        </dt>
+        <dd><?php echo $hit->description ?></dd>
+      <?php endif;
+      if ($hit->content_type == 'movie') : ?>
+        <dt>
+          <a
+            href="<?php echo $this->url(array('module' => 'publicada', 'controller' => 'movie', 'action' => 'edit', 'id' => $hit->movie_id, 'cl' => Zend_Registry::get('current_user_locale'))); ?>"><?php echo $this->escape($hit->title); ?></a>
+        </dt>
+        <dd><?php echo $hit->description ?></dd>
+      <?php endif;
+      if ($hit->content_type == 'person') : ?>
+        <dt>
+          <a
+            href="<?php echo $this->url(array('module' => 'publicada', 'controller' => 'person', 'action' => 'edit', 'id' => $hit->person_id, 'cl' => Zend_Registry::get('current_user_locale'))); ?>"><?php echo $this->escape($hit->name); ?></a>
+        </dt>
+        <dd>n/a</dd>
+      <?php endif; ?>
+    <?php endforeach; ?>
+  </dl>
+  <?php echo $this->paginationControl($this->hits, 'Sliding', 'page_elements/pagination_search.phtml'); ?>
+<?php else : ?>
+  <div class="message_info">
+    <p><?php echo $this->translate('search.yoursearch'); ?> <?php echo $this->translate('search.for'); ?>
+      "<strong><?php echo $this->query; ?></strong>" <?php echo $this->translate('search.foundnoresults'); ?></p>
+  </div>
+<?php endif; ?>

@@ -1,0 +1,24 @@
+<h2>Files in your site</h2>
+<table class="table table-striped">
+  <?php foreach ($this->files as $file) { ?>
+    <tr>
+      <td><?= $file['name']; ?></td>
+      <td class="buttons"><a href="<?= $this->baseUrl() . 'file/' . $file['name']; ?>">Download</a></td>
+      <td class="buttons"><a href="<?= $this->baseUrl() . 'file/' . $file['name']; ?>" class="link_url">Get link
+          URL</a></td>
+      <td class="buttons"><a
+          href="<?= $this->url(array('controller' => 'publicada', 'action' => 'deletefile', 'id' => $file['id']), null, true); ?>"
+          onclick="return confirm('Are you sure?');">Delete</a></td>
+    </tr>
+  <?php } ?>
+</table>
+<script type="text/javascript">
+  window.addEvent('domready', function () {
+    $$('.link_url').each(function (linkUrl) {
+      linkUrl.addEvent('click', function (ev) {
+        prompt("Please copy the following address:                           \n(You can paste it later elsewhere)", this.href);
+        return false;
+      });
+    });
+  });
+</script>

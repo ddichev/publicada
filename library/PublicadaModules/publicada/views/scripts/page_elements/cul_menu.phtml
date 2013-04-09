@@ -1,0 +1,21 @@
+<ul class="nav">
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php echo $this->translate('user.locale'); ?> <b
+        class="caret"></b></a>
+    <ul class="dropdown-menu">
+      <?php
+      $configuration = Zend_Registry::get('configuration');
+      foreach ($configuration['languages'] as $key => $language) : ?>
+        <?php if (Zend_Registry::get('current_user_locale') == $language) : ?>
+          <li class="active"><a href="#"><?php echo $this->translate($language); ?></a></li>
+        <?php else : ?>
+          <li>
+            <a
+              href="<?php echo $this->url(array('module' => 'publicada', 'controller' => 'index', 'action' => 'index', 'lang' => $language, 'cl' => Zend_Registry::get('content_locale')), null, true); ?>"
+              title="<?php echo $this->translate($language); ?>"><?php echo $this->translate($language); ?></a>
+          </li>
+        <?php endif; ?>
+      <?php endforeach; ?>
+    </ul>
+  </li>
+</ul>

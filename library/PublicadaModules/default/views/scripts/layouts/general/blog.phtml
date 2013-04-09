@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <?php echo $this->partial('page_elements/html_head.phtml', array('title' => $this->title, 'description' => $this->description, 'keywords' => $this->keywords)); ?>
+
+</head>
+<body>
+
+<?php echo $this->partial('page_elements/header.phtml', array('mainPages' => $this->mainPages, 'page' => $this->page, 'siteName' => $this->siteName, 'subPages' => $this->subPages, 'category' => $this->category)); ?>
+
+<div class="container">
+  <div class="row">
+    <div class="span8">
+      <div id="page_content">
+        <?php echo $this->layout()->content; ?>
+      </div>
+      <div id="posts_list">
+        <?php foreach ($this->posts as $post) : ?>
+          <div class="post">
+            <h2>
+              <a
+                href="<?php echo $this->url(array('id' => $post->id, 'lang' => Zend_Registry::get('current_user_locale')), 'post'); ?>#main"
+                title="<?php echo $post->title; ?>">
+                <?php echo $post->title; ?>
+              </a>
+            </h2>
+
+            <p class="post_abstract">
+              <?php
+              $postImage = $post->getImage();
+              if ($postImage) :
+                ?>
+                <img
+                  src="<?php echo $this->imageUrl($postImage->name, null, true, array('width' => 135, 'height' => 80)); ?>"
+                  alt="<?php echo $post->title; ?>"/>
+              <?php endif; ?>
+              <?php echo $this->getLeadSentence(68, strip_tags($post->body)); ?>
+            </p>
+          </div>
+        <?php endforeach; ?>
+      </div>
+      <?php echo $this->paginationControl($this->posts, 'Sliding', 'page_elements/pagination.phtml'); ?>
+    </div>
+
+    <div class="span4">
+      <div class="nav nav-list">
+        <h2 class="nav-header"><?php echo $this->translate('posts.categories'); ?></h2>
+        <?php echo $this->partial('page_elements/categoriestree.phtml', array('categories' => $this->categories, 'depth' => 1, 'depthCount' => 0)); ?>
+        <?php echo $this->getBody($this->page['code'] . 'sidebar'); ?>
+      </div>
+    </div>
+  </div>
+</div>
+
+<?php echo $this->partial('page_elements/footer.phtml', array('lang' => $this->lang, 'translate' => $this->translate)); ?>
+
+<?php echo $this->partial('page_elements/tracking.phtml'); ?>
+<?php echo $this->partial('page_elements/html_scripts.phtml'); ?>
+
+</body>
+</html>

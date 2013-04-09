@@ -1,0 +1,18 @@
+<?php if ($this->hitsCount > 0) : ?>
+  <?php $i = 0; ?>
+  <dl id="search_results">
+    <?php foreach ($this->hits as $hit) : ?>
+      <dt>
+        <?php if ($hit->content_type == 'page') : ?>
+          <a
+            href="<?php echo $this->url(array('controller' => 'page', 'action' => 'show', 'lang' => $hit->language, 'code' => $hit->code), 'page'); ?>"><?php echo $hit->title ?></a>
+        <?php endif; if ($hit->content_type == 'post') : ?>
+          <a
+            href="<?php echo $this->url(array('controller' => 'post', 'action' => 'show', 'lang' => $hit->language, 'id' => $hit->post_id), 'post'); ?>"><?php echo $hit->title ?></a>
+        <?php endif; ?>
+      </dt>
+      <dd><?php echo $hit->description ?></dd>
+    <?php endforeach; ?>
+  </dl>
+  <?php echo $this->paginationControl($this->hits, 'Sliding', 'page_elements/pagination_search.phtml'); ?>
+<?php endif; ?>

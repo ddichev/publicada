@@ -1,0 +1,14 @@
+<h2>Links in your site</h2>
+<table class="table table-striped">
+  <?php foreach ($this->links as $link) { ?>
+    <tr>
+      <td><?= $link['name']; ?></td>
+      <td class="buttons"><a
+          href="<?= $this->url(array('controller' => 'publicada', 'action' => 'editlink', 'id' => $link['id'])); ?>">Edit</a>
+      </td>
+      <td class="buttons"><a
+          href="<?= $this->url(array('controller' => 'publicada', 'action' => 'deletelink', 'id' => $link['id'])); ?>">Delete</a>
+      </td>
+    </tr>
+  <?php } ?>
+</table>

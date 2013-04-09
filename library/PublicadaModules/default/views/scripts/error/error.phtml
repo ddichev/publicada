@@ -1,0 +1,12 @@
+<div id="exception">
+  <h1 class="error_code"><?php echo $this->title; ?></h1>
+<pre>
+<?php
+  if ($this->showErrors) {
+    echo $this->exception->getMessage();
+    echo '<br />';
+    echo $this->exception->getTraceAsString();
+  }
+  ?>
+</pre>
+</div>

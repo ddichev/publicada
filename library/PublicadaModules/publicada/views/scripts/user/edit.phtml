@@ -1,0 +1,12 @@
+<h2><?php echo $this->translate('user.choose_actions'); ?></h2>
+<ul>
+  <li>
+    <a
+      href="<?php echo $this->url(array('module' => 'publicada', 'controller' => 'user', 'action' => 'editdetails'), null, true); ?>"
+      title="<?php echo $this->translate('user.edit'); ?>"><?php echo $this->translate('user.edit'); ?></a></li>
+  <li>
+    <a
+      href="<?php echo $this->url(array('module' => 'publicada', 'controller' => 'user', 'action' => 'changepassword'), null, true); ?>"
+      title="<?php echo $this->translate('user.change_password'); ?>"><?php echo $this->translate('user.change_password'); ?></a>
+  </li>
+</ul>

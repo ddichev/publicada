@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <title><?php echo $this->translate('publicada.authenticate'); ?>
+    - <?php echo $this->translate('publicada.title'); ?></title>
+
+  <?php echo $this->headLink()->appendStylesheet('/bootstrap/css/bootstrap.css'); ?>
+  <?php echo $this->headLink()->appendStylesheet('/bootstrap/css/bootstrap-responsive.css'); ?>
+  <?php echo $this->headLink()->appendStylesheet('/css/publicada.css'); ?>
+  <?php echo $this->headScript()->appendFile('/js/lib/jquery/jquery-1.8.1.min.js'); ?>
+  <?php echo $this->headScript()->appendFile('/bootstrap/js/bootstrap.js'); ?>
+
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <a
+        href="<?php echo $this->url(array('module' => 'publicada', 'controller' => 'index', 'action' => 'index'), null, true); ?>"
+        class="brand">Publicada</a>
+
+      <?php echo $this->partial('page_elements/top_menu.phtml', array('identity' => $this->getIdentity())); ?>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="span12">
+      <?php echo $this->layout()->content; ?>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

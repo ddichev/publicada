@@ -1,0 +1,22 @@
+<ul class="nav pull-right">
+  <?php if (Zend_Auth::getInstance()->hasIdentity()) : ?>
+    <li><a href="#"><?php echo Zend_Auth::getInstance()->getIdentity(); ?></a></li>
+    <li><a href="<?php echo $this->url(array('controller' => 'user', 'action' => 'edit')); ?>"
+           title="<?php echo $this->translate('user.account'); ?>"><?php echo $this->translate('user.account'); ?></a>
+    </li>
+    <li><a href="<?php echo $this->url(array('controller' => 'user', 'action' => 'new')); ?>"
+           title="<?php echo $this->translate('user.new'); ?>"><?php echo $this->translate('user.new'); ?></a></li>
+  <?php endif; ?>
+
+  <li>
+    <a
+      href="<?php echo $this->url(array('module' => 'default', 'controller' => 'index', 'action' => 'index'), null, true); ?>"
+      onclick="<?php echo Zend_Auth::getInstance()->hasIdentity() ? 'window.open(this.href); return false;' : ''; ?>"
+      title="<?php echo $this->translate('action.view_site'); ?>"><?php echo $this->translate('action.view_site'); ?></a>
+  </li>
+  <?php if (Zend_Auth::getInstance()->hasIdentity()) : ?>
+    <li><a href="<?php echo $this->url(array('controller' => 'user', 'action' => 'logout')); ?>"
+           title="<?php echo $this->translate('action.logout'); ?>"><?php echo $this->translate('action.logout'); ?></a>
+    </li>
+  <?php endif; ?>
+</ul>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <?php echo $this->partial('page_elements/html_head.phtml', array('title' => $this->title, 'description' => $this->description, 'keywords' => $this->keywords)); ?>
+
+</head>
+<body>
+
+
+<?php echo $this->partial('page_elements/header.phtml', array('mainPages' => $this->mainPages, 'page' => $this->page, 'siteName' => $this->siteName)); ?>
+
+<div class="hero-unit">
+  <div class="container">
+    <?php echo $this->layout()->content; ?>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <h2><?php echo $this->translate('posts.recent'); ?></h2>
+
+      <?php foreach ($this->posts as $post) : ?>
+        <h3>
+          <a
+            href="<?php echo $this->url(array('id' => $post->id, 'lang' => Zend_Registry::get('current_user_locale')), 'post'); ?>#main"
+            title="<?php echo $post->title; ?>">
+            <span class="publication_title"><?php echo $post->title; ?></span>
+          </a></h3>
+        <p>
+          <?php
+          $postImage = $post->getImage();
+          if ($postImage) :
+            ?>
+            <!-- TODO: check thumbnails -->
+            <!-- <span class="publication_thumbnail"><img src="<?php echo $this->imageUrl($postImage->name, null, true, array('width' => 135, 'height' => 80)); ?>" alt="<?php echo $post->title; ?>" /></span> -->
+          <?php endif; ?>
+          <span class="publication_date"><?php echo $this->getDate($post->published_at); ?></span>
+                    <span class="publication_author"><?php echo $this->translate('posts.by'); ?>
+                      <strong><?php echo $post->getUser()->nick; ?></strong></span>
+          <span class="publication_snippet"><?php echo $post->description; ?></span>
+        </p>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</div>
+
+<?php echo $this->partial('page_elements/footer.phtml'); ?>
+
+<?php echo $this->partial('page_elements/tracking.phtml'); ?>
+<?php echo $this->partial('page_elements/html_scripts.phtml'); ?>
+
+</body>
+</html>

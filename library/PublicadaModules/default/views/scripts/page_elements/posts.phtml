@@ -1,0 +1,10 @@
+<div class="post">
+  <h2>
+    <a
+      href="<?php echo $this->url(array('id' => $this->id, 'lang' => Zend_Registry::get('current_user_locale')), 'post'); ?>#main"
+      title="<?php echo $this->title; ?>">
+      <?php echo $this->title; ?>
+    </a>
+  </h2>
+  <?php echo $this->getLeadSentence(80, $this->body); ?>
+</div>

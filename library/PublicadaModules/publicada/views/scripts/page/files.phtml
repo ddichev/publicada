@@ -1,0 +1,22 @@
+<h2><?php echo $this->translate('file.list'); ?> [<?php echo $this->page->title; ?>]</h2>
+<a
+  href="<?php echo $this->url(array('module' => 'publicada', 'controller' => 'page', 'action' => 'edit', 'id' => $this->page->id)); ?>"
+  title="<?php echo $this->translate('action.edit'); ?>"
+  class="btn">
+  <i class="icon-arrow-left"></i>
+  <?php echo $this->translate('action.edit'); ?>
+</a>
+
+<fieldset class="decorated_fieldset">
+  <legend><?php echo $this->translate('page.images'); ?></legend>
+  <?php echo $this->partial('page/elements/filetable.phtml', array('files' => $this->images)); ?>
+  <p>
+    <a class="btn"
+       href="<?php echo $this->url(array('action' => 'addfile', 'type' => Publicada_Model_Page::FILE_TYPE_IMAGE, 'fid' => null)); ?>"
+       title="<?php echo $this->translate('page.image.new'); ?>"><?php echo $this->translate('page.image.new'); ?></a>
+    <a class="btn"
+       href="<?php echo $this->url(array('action' => 'addexistingfile', 'type' => Publicada_Model_Page::FILE_TYPE_IMAGE, 'fid' => null)); ?>"
+       title="<?php echo $this->translate('page.image.newexisting'); ?>"><?php echo $this->translate('page.image.newexisting'); ?></a>
+  </p>
+</fieldset>
+	

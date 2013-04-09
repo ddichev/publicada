@@ -1,0 +1,16 @@
+<h2>Link Categories &rarr; <a
+    href="<?= $this->url(array('controller' => 'publicada', 'action' => 'newlinkcategory'), null, true); ?>">Create
+    New Link Category</a></h2>
+<table class="table table-striped">
+  <?php foreach ($this->linkCategories as $linkCategory) { ?>
+    <tr>
+      <td><?= $linkCategory['name']; ?></td>
+      <td class="buttons"><a
+          href="<?= $this->url(array('controller' => 'publicada', 'action' => 'editlinkcategory', 'id' => $linkCategory['id'])); ?>">Edit</a>
+      </td>
+      <td class="buttons"><a
+          href="<?= $this->url(array('controller' => 'publicada', 'action' => 'deletelinkcategory', 'id' => $linkCategory['id'])); ?>">Delete</a>
+      </td>
+    </tr>
+  <?php } ?>
+</table>

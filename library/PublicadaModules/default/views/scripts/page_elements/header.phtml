@@ -1,0 +1,30 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <a href="<?php echo $this->indexUrl(); ?>" title="<?php echo $this->siteName; ?>"
+             class="brand"><?php echo $this->siteName; ?></a>
+
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <?php foreach ($this->mainPages as $mainPage) { ?>
+                <?php ($mainPage['code'] == $this->page['code']) ? $active = ' class="active"' : $active = ''; ?>
+                <li>
+                  <a
+                    href="<?php echo $this->url(array('lang' => Zend_Registry::get('content_locale'), 'code' => $mainPage['code']), 'page', true); ?>"
+                    title="<?php echo $mainPage['title']; ?>"<?php echo $active; ?>><?php echo $mainPage['title']; ?></a>
+                </li>
+              <?php } ?>
+            </ul>
+          </div>
+
+          <!-- TODO: check search -->
+          <!-- <form action="<?php echo $this -> url(array('lang' => Zend_Registry::get('current_user_locale')), 'search'); ?>">
+		            <input type="text" name="q" id="q" value="<?php echo isset($this->query) ? $this->query : '' ?>" />
+		    	</form> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

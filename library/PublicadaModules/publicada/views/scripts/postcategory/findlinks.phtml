@@ -1,0 +1,20 @@
+<div id="page_content">
+  <?php if (count($this->foundlinks)) : ?>
+    <h2><?php echo $this->query; ?></h2>
+    <form action="<?php echo $this->url(); ?>" method="post">
+      <table>
+        <?php foreach ($this->foundlinks as $hit) : ?>
+          <tr>
+            <td>
+              <label><strong><?php echo $hit->title ?></strong></label>
+            </td>
+          </tr>
+          <tr style="border-bottom: 1px solid #ECECEC;">
+            <td class="last"><?php echo $this->getLeadSentence(64, strip_tags($hit->description)); ?></td>
+          </tr>
+        <?php endforeach; ?>
+      </table>
+    </form>
+    <?php echo $this->paginationControl($this->foundlinks, 'Sliding', 'page_elements/pagination.phtml'); ?>
+  <?php endif; ?>
+</div>

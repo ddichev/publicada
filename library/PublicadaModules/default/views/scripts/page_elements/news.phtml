@@ -1,0 +1,11 @@
+<div id="news">
+  <h2>News &amp; Events</h2>
+  <ul>
+    <?php foreach ($this->posts as $post) { ?>
+      <li>
+        <a
+          href="<?= $this->url(array('controller' => 'post', 'action' => 'show', 'id' => $post['id'])); ?>"><?= $post['title']; ?></a>
+      </li>
+    <?php } ?>
+  </ul>
+</div>

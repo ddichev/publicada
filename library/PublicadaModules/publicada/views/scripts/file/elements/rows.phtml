@@ -1,0 +1,21 @@
+<tr class="<?php echo ($this->partialCounter % 2) == 1 ? 'even' : 'odd'; ?>">
+  <td class="wide_col"><?php echo $this->name; ?></td>
+  <td class="buttons">
+    <a href="<?php echo $this->url(array('action' => 'edit', 'id' => $this->id)); ?>"
+       title="<?php echo $this->translate('action.edit'); ?>"><?php echo $this->translate('action.edit'); ?></a>
+  </td>
+  <td class="buttons">
+    <a href="<?php echo $this->baseUrl() . '/file/' . $this->name; ?>" class="link_download"
+       title="<?php echo $this->translate('action.download'); ?>"><?php echo $this->translate('action.download'); ?></a>
+  </td>
+  <td class="buttons">
+    <a href="<?php echo $this->baseUrl() . '/file/' . $this->name; ?>" class="link_url"
+       title="<?php echo $this->translate('action.get_link'); ?>"><?php echo $this->translate('action.get_link'); ?></a>
+  </td>
+  <td class="buttons">
+    <a
+      href="<?php echo $this->url(array('module' => 'publicada', 'controller' => 'file', 'action' => 'delete', 'id' => $this->id, 'cl' => Zend_Registry::get('content_locale')), null, true); ?>"
+      onclick="return confirm('<?php echo $this->translate('warn.are_you_sure'); ?>');"
+      title="<?php echo $this->translate('action.delete'); ?>"><?php echo $this->translate('action.delete'); ?></a>
+  </td>
+</tr>

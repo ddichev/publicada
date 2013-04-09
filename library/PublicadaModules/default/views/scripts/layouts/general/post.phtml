@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <?php echo $this->partial('page_elements/html_head.phtml', array('title' => $this->title, 'description' => $this->description, 'keywords' => $this->keywords)); ?>
+
+</head>
+<body>
+
+<?php echo $this->partial('page_elements/header.phtml', array('mainPages' => $this->mainPages, 'page' => $this->page, 'siteName' => $this->siteName, 'subPages' => $this->subPages, 'post' => $this->post)); ?>
+
+<div class="container">
+  <div class="row">
+    <div class="span8">
+
+      <div id="post">
+        <?php echo $this->layout()->content; ?>
+      </div>
+
+    </div>
+
+    <div class="span4">
+      <div class="sidebar-nav well">
+        <h2><?php echo $this->translate('posts.categories'); ?></h2>
+        <?php echo $this->partial('page_elements/categoriestree.phtml', array('categories' => $this->categories, 'depth' => 1, 'depthCount' => 0)); ?>
+        <?php echo $this->getBody($this->page['code'] . 'sidebar'); ?>
+      </div>
+    </div>
+  </div>
+</div>
+
+<?php echo $this->partial('page_elements/footer.phtml'); ?>
+
+<?php echo $this->partial('page_elements/tracking.phtml'); ?>
+<?php echo $this->partial('page_elements/html_scripts.phtml'); ?>
+
+</body>
+</html>

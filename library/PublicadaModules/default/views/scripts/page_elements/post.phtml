@@ -1,0 +1,7 @@
+<div class="posts">
+  <h2>
+    <a
+      href="<?php echo $this->url(array('id' => $this->post->id, 'lang' => Zend_Registry::get('current_user_locale')), 'post'); ?>"
+      title="<?php echo $this->post->title; ?>"><?php echo $this->post->title; ?></a></h2>
+  <?php echo $this->post->body; ?>
+</div>

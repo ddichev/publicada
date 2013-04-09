@@ -1,0 +1,61 @@
+<h1><?php echo $this->post->title; ?></h1>
+
+<p class="post_meta">
+  <?php echo $this->translate('posts.published_by'); ?>
+  <strong><?php echo $this->post->getUser()->nick; ?></strong>
+  <?php echo $this->translate('posts.on'); ?>
+  <?php echo $this->getDate($this->post['published_at']); ?>
+  <?php echo $this->translate('posts.in'); ?>
+  <?php
+  $postCategories = $this->post->getCategories();
+
+  $postCategoriesCount = count($postCategories);
+  $i = 1;
+  foreach ($postCategories as $postCategory) :
+    ?>
+    <a href="<?php echo $this->url(array('code' => $postCategory->code, 'lang' => Zend_Registry::get('content_locale')), 'category'); ?>"
+       title="<?php echo $postCategory->name; ?>">
+      <?php echo $postCategory->name; ?>
+    </a>
+    <?php echo $i == $postCategoriesCount ? '' : '|'; ?>
+
+    <?php
+    $i++;
+  endforeach;
+  ?>
+</p>
+
+<?php
+$images = $this->post->getImages();
+if (count($images)) :
+  ?>
+
+  <div class="well" id="picture">
+    <img
+      src="<?php echo $this->imageUrl($images[$this->postImageIndex]->name, null, true, array('width' => 540)); ?>"
+      alt="<?php echo $images[$this->postImageIndex]->title; ?>"/>
+    <br/>
+	<span class="desc">
+	<?php echo $images[$this->postImageIndex]->title; ?>
+	</span>
+  </div>
+
+  <?php if (count($images) > 1) : ?>
+  <ul class="thumbnails row">
+    <?php $imageIndex = 0; ?>
+    <?php foreach ($images as $image) : ?>
+      <li class="<?php echo $imageIndex == $this->postImageIndex ? 'active' : '' ?> span1">
+        <a href="<?php echo $this->url(array('id' => $this->post->id, 'pic' => $imageIndex++), 'postimage'); ?>"
+           title="<?php echo $image->title; ?>">
+          <img
+            src="<?php echo $this->imageUrl($image->name, null, true, array('width' => 70, 'height' => 70)); ?>"
+            alt="<?php echo $image->title; ?>"/>
+        </a>
+      </li>
+    <?php endforeach; ?>
+  </ul>
+<?php endif; ?>
+<?php endif; ?>
+
+<?php echo $this->richText($this->post->body); ?>
+

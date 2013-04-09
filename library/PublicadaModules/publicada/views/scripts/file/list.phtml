@@ -1,0 +1,27 @@
+<h2>
+  <?php echo $this->translate('file.list'); ?>
+
+  <a href="<?php echo $this->url(array('module' => 'publicada', 'controller' => 'file', 'action' => 'create')); ?>"
+     class="btn btn-primary btn-small pull-right"
+     title="<?php echo $this->translate('file.new'); ?>"><?php echo $this->translate('file.new'); ?></a>
+</h2>
+
+<?php if (count($this->files)) : ?>
+  <?php echo $this->partial('file/elements/table.phtml', array('files' => $this->files)); ?>
+  <?php echo $this->paginationControl($this->files, 'Sliding', 'page_elements/pagination.phtml'); ?>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $(".link_download").click(function () {
+        downloadWindow = window.open(this.href, "Download");
+        return false;
+      });
+
+      $('.link_url').click(function () {
+        prompt("Please copy the following address:                                       \n(You can paste it later elsewhere)", this.href);
+        return false;
+      });
+    });
+  </script>
+<?php else: ?>
+  <p><?php echo $this->translate('file.empty'); ?></p>
+<?php endif; ?>

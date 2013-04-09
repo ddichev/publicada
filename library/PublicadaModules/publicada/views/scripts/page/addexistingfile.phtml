@@ -1,0 +1,12 @@
+<div>
+  <?php if (!count($this->files)) : ?>
+    <?php echo '!'; ?>
+  <?php else : ?>
+    <h2><?php echo $this->translate('files.existing.choose'); ?> [<?php echo $this->page->title; ?>]</h2>
+    <form action="<?php echo $this->url(); ?>" enctype="application/x-www-form-urlencoded" method="post">
+      <?php echo $this->partial('page/elements/existingfiletable.phtml', array('files' => $this->files)); ?>
+      <p><input type="submit" value="<?php echo $this->translate('page.file.select'); ?>"/></p>
+    </form>
+    <?php echo $this->paginationControl($this->files, 'Sliding', 'page_elements/pagination.phtml'); ?>
+  <?php endif; ?>
+</div>

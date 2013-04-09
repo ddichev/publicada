@@ -1,0 +1,13 @@
+<?php if (count($this->postsPaginator)) : ?>
+  <h2><?php echo $this->translate('posts.in'); ?> <?php echo $this->postCategory['name']; ?></h2>
+  <dl class="table table-striped">
+    <?php foreach ($this->postsPaginator as $post) : ?>
+      <dt class="<?php echo (!$this->getHelper('PartialLoop')->view->altrow ^= 1) ? 'even' : 'odd'; ?>">
+        <a
+          href="<?php echo $this->url(array('controller' => 'post', 'action' => 'show', 'id' => $post['id'], 'lang' => $post['language']), 'post'); ?>"><?php echo $post['title']; ?></a>
+      </dt>
+      <dd></dd>
+    <?php endforeach; ?>
+  </dl>
+  <?php echo $this->paginationControl($this->postsPaginator, 'Sliding', 'pagination.phtml'); ?>
+<?php endif; ?>

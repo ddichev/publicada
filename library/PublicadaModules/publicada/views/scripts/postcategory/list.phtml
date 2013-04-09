@@ -1,0 +1,32 @@
+<h2>
+  <?php if (!empty($this->postCategory)) : ?>
+    <a
+      href="<?php echo $this->url(array('controller' => 'postcategory', 'action' => 'list', 'code' => null, 'ccode' => null)); ?>"
+      title="<?php echo $this->translate('postcategory.list'); ?>">
+      <?php endif; ?>
+      <?php echo $this->translate('postcategory.list'); ?>
+      <?php if (!empty($this->postCategory)) : ?>
+    </a>
+  <?php endif; ?>
+  
+  <?php if (!empty($this->postCategory)) : ?>
+    ... <a
+      href="<?php echo $this->url(array('controller' => 'postcategory', 'action' => 'list', 'code' => $this->postCategory->code)); ?>"
+      title="<?php echo $this->postCategory->name; ?>">
+      <?php echo $this->postCategory->name; ?>
+    </a>
+  <?php endif; ?>
+
+  <a
+    href="<?php echo $this->url(array('module' => 'publicada', 'controller' => 'postcategory', 'action' => 'create')); ?>"
+    class="btn btn-primary btn-small pull-right"
+    title="<?php echo $this->translate('postcategory.new'); ?>"><?php echo $this->translate('postcategory.new'); ?></a>
+
+</h2>
+
+<?php echo $this->partial('postcategory/elements/table.phtml', array('postCategories' => $this->postCategories)); ?>
+
+<?php if (count($this->postCategories) == 0) : ?>
+  <p
+    class="msg_warning"><?php echo empty($this->postCategory) ? $this->translate('category.none') : $this->postCategory->name . ': ' . $this->translate('category.empty'); ?></p>
+<?php endif; ?>
