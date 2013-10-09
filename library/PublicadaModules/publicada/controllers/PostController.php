@@ -209,8 +209,8 @@ class Publicada_PostController extends Publicada_Controller_Management
         ->addMultiOption($postCategory->id, $postCategory->name);
     }
 
-    $linkCategoriesModel = Publicada_Model_LinkCategories::getInstance();
-    $linkCategories = $linkCategoriesModel->getAll(array('lang' => $this->_getParam('cl')));
+    // $linkCategoriesModel = Publicada_Model_LinkCategories::getInstance();
+    // $linkCategories = $linkCategoriesModel->getAll(array('lang' => $this->_getParam('cl')));
 
     if ($form->getElement('language') != null) {
       $configuration = Zend_Registry::get('configuration');

@@ -7,7 +7,7 @@ class Publicada_Controller_Util_Image extends Publicada_Controller_Action
 	public function urlAction()
 	{
 	    $file = $this->_getParam('src');
-	    $fileDir = APPLICATION_PATH . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'static' . DIRECTORY_SEPARATOR . $this->_dirName . DIRECTORY_SEPARATOR;
+	    $fileDir = APPLICATION_PATH . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'writable/static' . DIRECTORY_SEPARATOR . $this->_dirName . DIRECTORY_SEPARATOR;
 	
 	    if (file_exists($fileDir . $file))
 	    {
@@ -29,14 +29,6 @@ class Publicada_Controller_Util_Image extends Publicada_Controller_Action
 
 			$contents = $simpleImage->output();
 			
-			$fileName = basename($_SERVER['REQUEST_URI']);
-			if ($this->_dirName == 'posters') {
-				$simpleImage->save($configuration['static_poster_storage'] . DIRECTORY_SEPARATOR . $fileName);	
-			}
-			else {
-				$simpleImage->save($configuration['static_image_storage'] . DIRECTORY_SEPARATOR . $fileName);	
-			}
-
 	        echo $contents;
 	    }
 		else {
