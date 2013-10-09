@@ -103,12 +103,6 @@ class Publicada_PageController extends Publicada_Controller_Management
       $form->getElement('renderer')->addMultiOption($rendererKey, $rendererVal);
     }
 
-    $linkCategoriesModel = Publicada_Model_Links::getInstance();
-    $linkCategories = $linkCategoriesModel->getAll();
-    foreach ($linkCategories as $linkCategory) {
-      $form->getElement('links_code')->addMultiOption($linkCategory->code, $linkCategory->name);
-    }
-
     return $form;
   }
 

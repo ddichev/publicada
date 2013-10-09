@@ -23,7 +23,7 @@ class PageController extends Publicada_Controller_Action
       $this->view->posts = $posts;
 
       $postCategoryModel = Publicada_Model_PostCategories::getInstance();
-      $categories = $postCategoryModel->getCategories('');
+      $categories = $postCategoryModel->getCategories('category1');
       $this->view->categories = $categories;
     }
 
