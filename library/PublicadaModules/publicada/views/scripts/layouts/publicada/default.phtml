@@ -14,36 +14,38 @@
 
 </head>
 <body>
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container-fluid">
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
 
-      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      
-      <a
-        href="<?php echo $this->url(array('module' => 'publicada', 'controller' => 'index', 'action' => 'index'), null, true); ?>"
-        class="brand">
-        Publicada
-      </a>
-      
-      <?php echo $this->partial('page_elements/main_menu.phtml'); ?>
+    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    
+    <a
+      href="<?php echo $this->url(array('module' => 'publicada', 'controller' => 'index', 'action' => 'index'), null, true); ?>"
+      class="navbar-brand">
+      Publicada
+    </a>
+    </div>
+    
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
 
-      <div class="nav-collapse collapse">
-        <?php echo $this->partial('page_elements/top_menu.phtml', array('identity' => $this->getIdentity())); ?>
-        <?php # echo $this->partial('page_elements/cl_menu.phtml'); ?>
-        <?php # echo $this->partial('page_elements/cul_menu.phtml'); ?>
-      </div>
+      <?php echo $this->partial('page_elements/top_menu.phtml', array('identity' => $this->getIdentity())); ?>
+      <?php # echo $this->partial('page_elements/cl_menu.phtml'); ?>
+      <?php # echo $this->partial('page_elements/cul_menu.phtml'); ?>
     </div>
   </div>
-</div>
+</header>
 
-<div class="container-fluid">
-  <div class="row-fluid">
-    <div class="span12">
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <?php echo $this->partial('page_elements/main_menu.phtml'); ?>      
+    </div>
+    <div class="col-md-10">
 
       <?php echo $this->layout()->content; ?>
 

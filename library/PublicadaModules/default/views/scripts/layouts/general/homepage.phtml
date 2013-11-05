@@ -10,7 +10,7 @@
 
 <?php echo $this->partial('page_elements/header.phtml', array('mainPages' => $this->mainPages, 'page' => $this->page, 'siteName' => $this->siteName)); ?>
 
-<div class="hero-unit">
+<div class="jumbotron">
   <div class="container">
     <?php echo $this->layout()->content; ?>
   </div>
@@ -18,7 +18,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="span12">
+    <div class="col-lg-12 col-md-12 col-sm-12">
       <h2><?php echo $this->translate('posts.recent'); ?></h2>
 
       <?php foreach ($this->posts as $post) : ?>

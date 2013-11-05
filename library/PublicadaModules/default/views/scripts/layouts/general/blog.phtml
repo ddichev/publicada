@@ -11,7 +11,15 @@
 
 <div class="container">
   <div class="row">
-    <div class="span8">
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="nav nav-list">
+        <h2 class="nav-header"><?php echo $this->translate('posts.categories'); ?></h2>
+        <?php echo $this->partial('page_elements/categoriestree.phtml', array('categories' => $this->categories, 'depth' => 1, 'depthCount' => 0)); ?>
+        <?php echo $this->getBody($this->page['code'] . 'sidebar'); ?>
+      </div>
+    </div>
+
+    <div class="col-lg-8 col-md-8 col-sm-12">
       <div id="page_content">
         <?php echo $this->layout()->content; ?>
       </div>
@@ -43,13 +51,6 @@
       <?php echo $this->paginationControl($this->posts, 'Sliding', 'page_elements/pagination.phtml'); ?>
     </div>
 
-    <div class="span4">
-      <div class="nav nav-list">
-        <h2 class="nav-header"><?php echo $this->translate('posts.categories'); ?></h2>
-        <?php echo $this->partial('page_elements/categoriestree.phtml', array('categories' => $this->categories, 'depth' => 1, 'depthCount' => 0)); ?>
-        <?php echo $this->getBody($this->page['code'] . 'sidebar'); ?>
-      </div>
-    </div>
   </div>
 </div>
 

@@ -1,30 +1,29 @@
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <div class="row">
-        <div class="span12">
-          <a href="<?php echo $this->indexUrl(); ?>" title="<?php echo $this->siteName; ?>"
-             class="brand"><?php echo $this->siteName; ?></a>
+<header class="navbar navbar-default main-navbar">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
 
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <?php foreach ($this->mainPages as $mainPage) { ?>
-                <?php ($mainPage['code'] == $this->page['code']) ? $active = ' class="active"' : $active = ''; ?>
-                <li>
-                  <a
-                    href="<?php echo $this->url(array('lang' => Zend_Registry::get('content_locale'), 'code' => $mainPage['code']), 'page', true); ?>"
-                    title="<?php echo $mainPage['title']; ?>"<?php echo $active; ?>><?php echo $mainPage['title']; ?></a>
-                </li>
-              <?php } ?>
-            </ul>
-          </div>
-
-          <!-- TODO: check search -->
-          <!-- <form action="<?php echo $this -> url(array('lang' => Zend_Registry::get('current_user_locale')), 'search'); ?>">
-		            <input type="text" name="q" id="q" value="<?php echo isset($this->query) ? $this->query : '' ?>" />
-		    	</form> -->
-        </div>
-      </div>
+      <a href="<?php echo $this->indexUrl(); ?>" title="<?php echo $this->siteName; ?>"
+         class="page-title navbar-brand"><?php echo $this->siteName; ?></a>
     </div>
+    
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav pull-right">
+        <?php foreach ($this->mainPages as $mainPage) { ?>
+          <?php ($mainPage['code'] == $this->page['code']) ? $active = ' class="active"' : $active = ''; ?>
+          <li<?php echo $active; ?>>
+            <a
+              href="<?php echo $this->url(array('lang' => Zend_Registry::get('content_locale'), 'code' => $mainPage['code']), 'page', true); ?>"
+              title="<?php echo $mainPage['title']; ?>"<?php echo $active; ?>><?php echo $mainPage['title']; ?></a>
+          </li>
+        <?php } ?>
+      </ul>
+    </div><!-- /.navbar-collapse -->
   </div>
-</div>
+</header>

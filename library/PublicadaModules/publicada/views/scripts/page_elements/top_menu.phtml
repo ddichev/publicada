@@ -1,4 +1,4 @@
-<ul class="nav pull-right">
+<ul class="nav navbar-nav pull-right">
   <?php if (Zend_Auth::getInstance()->hasIdentity()) : ?>
     <li><a href="#"><?php echo Zend_Auth::getInstance()->getIdentity(); ?></a></li>
     <li><a href="<?php echo $this->url(array('controller' => 'user', 'action' => 'edit')); ?>"
